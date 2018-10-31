@@ -1,6 +1,7 @@
 ---
 title: "Object transforms and V2 changes"
 authors: Mark Moissette
+license: Public Domain
 tags:
 - jscad
 - V2
@@ -38,6 +39,19 @@ Transformations in Jscad/ Csg.js are currently **'baked in'** ie,
     * other than an offset position, the structure of ***shape1*** and ***shape2*** is 100% identical: 
     ie if you move a complex shape with holes around, it is still the ***same*** shape, just somewhere else.
     The same also applies for rotations & scaling.
+
+ - this is easy to see visually:
+  
+  ![logo in default position/transform](./assets/jscad-logo-default.png "logo default")
+
+  has the same shape but a different ***position*** as
+
+  ![logo in another position/translated](./assets/jscad-logo-translated.png "logo translated")
+
+  has the same shape but a different ***rotation*** as
+
+  ![logo in another rotation/rotated](./assets/jscad-logo-rotated.png "logo rotated")
+
 
 ### consequences:
   #### ***CPU/computation cost***
@@ -128,4 +142,10 @@ this can pile up quite fast !
   * real time movement of the final parts in assemblies , a feature request that comes up regularly: you could place parts (once their shape is final) with close to 0 computational cost: move them with your mouse, create animations etc
 
         
-  > note that in the current implemenation almost only the boolean /csg operation need the baked in transforms but even that can be changed very simply by applying the transforms during the boolean op
+  > note: in the current implemenation almost only the boolean /csg operation need the baked in transforms but even that can be changed very simply by applying the transforms during the boolean op
+
+
+# conclusion
+
+We are in the process of implementing these changes into the V2 codebase, and need to iron out some issues that stem from changing the structure of the basic 2D/3D data structures.
+If you have feedback, see issues that we might have missed, please let us know!
